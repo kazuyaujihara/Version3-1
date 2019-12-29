@@ -391,6 +391,7 @@ namespace Chem4Word
                     sb.Append("All molecule files (*.cml, *.mol, *.sdf)|*.cml;*.mol;*.sdf");
                     sb.Append("|CML molecule files (*.cml)|*.cml");
                     sb.Append("|MDL molecule files (*.mol, *.sdf)|*.mol;*.sdf");
+                    sb.Append("|SMILES files (*.smi)|*.smi");
 
                     OpenFileDialog ofd = new OpenFileDialog();
                     ofd.Filter = sb.ToString();
@@ -425,6 +426,10 @@ namespace Chem4Word
                                 case ".sdf":
                                     SdFileConverter sdFileConverter = new SdFileConverter();
                                     model = sdFileConverter.Import(mol);
+                                    break;
+
+                                case ".smi":
+
                                     break;
 
                                 default:

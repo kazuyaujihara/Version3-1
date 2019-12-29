@@ -51,9 +51,10 @@ namespace WinForms.TestHarness
                 Model model = null;
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append("All molecule files (*.mol, *.sdf, *.cml)|*.mol;*.sdf;*.cml");
+                sb.Append("All molecule files (*.mol, *.sdf, *.cml, *.smi)|*.mol;*.sdf;*.cml;*.smi");
                 sb.Append("|CML molecule files (*.cml)|*.cml");
                 sb.Append("|MDL molecule files (*.mol, *.sdf)|*.mol;*.sdf");
+                sb.Append("|SMILES files (*.smi)|*.smi");
 
                 openFileDialog1.Title = "Open Structure";
                 openFileDialog1.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
@@ -82,6 +83,9 @@ namespace WinForms.TestHarness
                         case ".cml":
                         case ".xml":
                             model = cmlConvertor.Import(mol);
+                            break;
+
+                        case ".smi":
                             break;
                     }
 
